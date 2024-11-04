@@ -22,3 +22,5 @@ D:\klasaCzwarta\pm7\powtorzenie\obj\Debug\net8.0-windows\addWindow.g.cs
 D:\klasaCzwarta\pm7\powtorzenie\obj\Debug\net8.0-windows\editWindow.g.cs
 D:\klasaCzwarta\pm7\powtorzenie\obj\Debug\net8.0-windows\addWindow.baml
 D:\klasaCzwarta\pm7\powtorzenie\obj\Debug\net8.0-windows\editWindow.baml
+D:\klasaCzwarta\pm7\powtorzenie\obj\Debug\net8.0-windows\powtorzenie.sourcelink.json
+D:\klasaCzwarta\pm7\powtorzenie\obj\Debug\net8.0-windows\App.baml

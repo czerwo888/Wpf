@@ -12,8 +12,11 @@ public class Person
     
     public Person(string name, int age)
     {
-        Id = People.Max(x => x.Id) + 1;
-        Name = name;
+        if(People.Count == 0)
+            Id = 1;
+        else
+            Id = People.Max(x => x.Id) + 1;
+        Name = name; 
         Age = age;
     }
 }

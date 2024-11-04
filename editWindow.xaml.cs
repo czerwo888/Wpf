@@ -8,4 +8,9 @@ public partial class editWindow : Window
     {
         InitializeComponent();
     }
+
+    private void edit(object sender, RoutedEventArgs e)
+    {
+        this.Close();
+    }
 }

@@ -20,9 +20,9 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         
-        Person.People.Add(new Person { Id = 1, Name = "John", Age = 25 });
-        Person.People.Add(new Person { Id = 2, Name = "Jane", Age = 30 });
-        Person.People.Add(new Person { Id = 3, Name = "Joe", Age = 35 });
+        Person.People.Add(new Person("Kamil", 25));
+        Person.People.Add(new Person("Adam", 30));
+        Person.People.Add(new Person("Ewa", 20));
         
         dataGrid.ItemsSource = Person.People;
     }
@@ -31,15 +31,50 @@ public partial class MainWindow : Window
     {
         addWindow addWindow = new addWindow();
         addWindow.ShowDialog();
+
+        int age;
+        int.TryParse(addWindow.ageBox.Text, out age);
+        if(age != 0)
+        {
+            Person.People.Add(new Person(addWindow.nameBox.Text, age));
+            dataGrid.Items.Refresh();
+        }
     }
 
     private void edit(object sender, RoutedEventArgs e)
     {
-        throw new NotImplementedException();
+        var person = (Person)dataGrid.SelectedItem;
+        if(person != null)
+        {
+            editWindow editWindow = new editWindow();
+            editWindow.nameBox.Text = person.Name;
+            editWindow.ageBox.Text = person.Age.ToString();
+            editWindow.ShowDialog();
+            
+            int age;
+            int.TryParse(editWindow.ageBox.Text, out age);
+            if(age != 0)
+            {
+                person.Name = editWindow.nameBox.Text;
+                person.Age = age;
+                dataGrid.Items.Refresh();
+            }
+        }
     }
 
     private void delete(object sender, RoutedEventArgs e)
     {
-        throw new NotImplementedException();
+        var person = (Person)dataGrid.SelectedItem;
+        if (person != null)
+        {
+            var result = MessageBox.Show("Czy napwno chcesz usunąć obiekt?",
+                "Delete", MessageBoxButton.YesNo);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                Person.People.Remove(person);
+                dataGrid.Items.Refresh();
+            }
+        }
     }
 }
